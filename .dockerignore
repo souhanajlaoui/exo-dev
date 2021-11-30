@@ -1,0 +1,9 @@
+.git
+.idea
+var/cache/*
+var/logs/*
+docker/
+data/
+.dockerignore
+docker-compose.yml
+
