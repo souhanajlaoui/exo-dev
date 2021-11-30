@@ -46,6 +46,13 @@ class Comment
      */
     protected $message;
 
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="validated", type="boolean", options={"default": false})
+     */
+    protected $validated = false;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -95,6 +102,18 @@ class Comment
     public function setMessage(string $message): self
     {
         $this->message = $message;
+
+        return $this;
+    }
+
+    public function getValidated(): ?bool
+    {
+        return $this->validated;
+    }
+
+    public function setValidated(bool $validated): self
+    {
+        $this->validated = $validated;
 
         return $this;
     }
