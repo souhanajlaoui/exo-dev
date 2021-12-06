@@ -90,6 +90,7 @@ class Post
     {
         $this->comments = new ArrayCollection();
         $this->categories = new ArrayCollection();
+        $this->updatedAt = new \DateTime();
     }
 
     public function getId(): ?int

@@ -25,5 +25,8 @@ install: ## Install project
 	docker exec -it exo_web composer install
 	docker exec -it exo_web php bin/console ckeditor:install
 	docker exec -it exo_web php bin/console assets:install --symlink
+	docker exec -it exo_web yarn install
+	docker exec -it exo_web yarn run dev
 	docker exec -it exo_web php bin/console doctrine:migrations:migrate --no-interaction
+	docker exec -it exo_web php bin/console doctrine:fixtures:load -n
 

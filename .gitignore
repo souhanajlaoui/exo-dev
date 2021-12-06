@@ -24,7 +24,8 @@
 ###< docker ###
 
 ###> Upload ###
-public/images
+public/images/*
+!public/images/image-fixture.png
 ###< Upload ###
 
 ###> symfony/webpack-encore-bundle ###

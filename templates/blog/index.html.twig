@@ -3,153 +3,30 @@
 {% block title %}Blog{% endblock %}
 
 {% block body %}
-    <div class="site-wrap" id="home-section">
-
-        <div class="site-mobile-menu site-navbar-target">
-            <div class="site-mobile-menu-header">
-                <div class="site-mobile-menu-close mt-3">
-                    <span class="icon-close2 js-menu-toggle"></span>
-                </div>
-            </div>
-            <div class="site-mobile-menu-body"></div>
-        </div>
-
-        <header class="site-navbar site-navbar-target" role="banner">
-
-            <div class="container">
-                <div class="row align-items-center position-relative">
-
-                    <div class="col-3 ">
-                        <div class="site-logo">
-                            <a href="index.html">Barberz</a>
-                        </div>
-                    </div>
-
-                    <div class="col-9  text-right">
-
-
-                        <span class="d-inline-block d-lg-none"><a href="#" class="text-white site-menu-toggle js-menu-toggle py-5 text-white"><span class="icon-menu h3 text-black"></span></a></span>
-
-
-
-                        <nav class="site-navigation text-right ml-auto d-none d-lg-block" role="navigation">
-                            <ul class="site-menu main-menu js-clone-nav ml-auto ">
-                                <li><a href="index.html" class="nav-link">Home</a></li>
-                                <li><a href="services.html" class="nav-link">Services</a></li>
-                                <li><a href="barber-shop.html" class="nav-link">Barber Shop</a></li>
-                                <li><a href="about.html" class="nav-link">About</a></li>
-                                <li class="active"><a href="blog.html" class="nav-link">Blog</a></li>
-                                <li><a href="contact.html" class="nav-link">Contact</a></li>
-                            </ul>
-                        </nav>
-                    </div>
-
-
-                </div>
-            </div>
-
-        </header>
-
-        <div class="site-section bg-light">
-            <div class="container">
+    <div class="site-section bg-light">
+        <div class="container">
+            {% for post in posts %}
                 <div class="row">
-                    <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="col-lg-12 col-md-12 mb-12">
                         <div class="post-entry-1 h-100">
-                            <a href="single.html">
-                                <img src="images/img_1.jpg" alt="Image"
-                                     class="img-fluid">
-                            </a>
-                            <div class="post-entry-1-contents">
-
-                                <h2><a href="single.html">Lorem ipsum dolor sit amet</a></h2>
-                                <span class="meta d-inline-block mb-3">July 17, 2019 <span class="mx-2">by</span> <a href="#">Admin</a></span>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores eos soluta, dolore harum molestias consectetur.</p>
+                            <div class="row">
+                                <div class="col-lg-4 col-md-4 mb-4">
+                                    <a href="{{ path('post_show', {id: post.id}) }}">
+                                        <img src="{{ asset('images/' ~ post.visual) }}" alt="Image" class="img-fluid">
+                                    </a>
+                                </div>
+                                <div class="col-lg-8 col-md-8 mb-8">
+                                    <div class="post-entry-1-contents">
+                                        <h2><a href="{{ path('post_show', {id: post.id}) }}">{{ post.title }}</a></h2>
+                                        <span class="meta d-inline-block mb-3">{{ post.publicationDate|date('d-m-Y H:i') }}</span>
+                                        <p>{{ post.resume|raw }}</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="post-entry-1 h-100">
-                            <a href="single.html">
-                                <img src="images/img_2.jpg" alt="Image"
-                                     class="img-fluid">
-                            </a>
-                            <div class="post-entry-1-contents">
-
-                                <h2><a href="single.html">Lorem ipsum dolor sit amet</a></h2>
-                                <span class="meta d-inline-block mb-3">July 17, 2019 <span class="mx-2">by</span> <a href="#">Admin</a></span>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores eos soluta, dolore harum molestias consectetur.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="post-entry-1 h-100">
-                            <a href="single.html">
-                                <img src="images/img_3.jpg" alt="Image"
-                                     class="img-fluid">
-                            </a>
-                            <div class="post-entry-1-contents">
-
-                                <h2><a href="single.html">Lorem ipsum dolor sit amet</a></h2>
-                                <span class="meta d-inline-block mb-3">July 17, 2019 <span class="mx-2">by</span> <a href="#">Admin</a></span>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores eos soluta, dolore harum molestias consectetur.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="post-entry-1 h-100">
-                            <a href="single.html">
-                                <img src="images/img_1.jpg" alt="Image"
-                                     class="img-fluid">
-                            </a>
-                            <div class="post-entry-1-contents">
-
-                                <h2><a href="single.html">Lorem ipsum dolor sit amet</a></h2>
-                                <span class="meta d-inline-block mb-3">July 17, 2019 <span class="mx-2">by</span> <a href="#">Admin</a></span>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores eos soluta, dolore harum molestias consectetur.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="post-entry-1 h-100">
-                            <a href="single.html">
-                                <img src="images/img_2.jpg" alt="Image"
-                                     class="img-fluid">
-                            </a>
-                            <div class="post-entry-1-contents">
-
-                                <h2><a href="single.html">Lorem ipsum dolor sit amet</a></h2>
-                                <span class="meta d-inline-block mb-3">July 17, 2019 <span class="mx-2">by</span> <a href="#">Admin</a></span>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores eos soluta, dolore harum molestias consectetur.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="post-entry-1 h-100">
-                            <a href="single.html">
-                                <img src="images/img_3.jpg" alt="Image"
-                                     class="img-fluid">
-                            </a>
-                            <div class="post-entry-1-contents">
-
-                                <h2><a href="single.html">Lorem ipsum dolor sit amet</a></h2>
-                                <span class="meta d-inline-block mb-3">July 17, 2019 <span class="mx-2">by</span> <a href="#">Admin</a></span>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores eos soluta, dolore harum molestias consectetur.</p>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="col-12 mt-5 text-center">
-                        <span class="p-3">1</span>
-                        <a href="#" class="p-3">2</a>
-                        <a href="#" class="p-3">3</a>
-                        <a href="#" class="p-3">4</a>
                     </div>
                 </div>
-            </div>
+            {% endfor %}
         </div>
     </div>
 {% endblock %}
