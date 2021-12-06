@@ -5,10 +5,13 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\PostRepository")
  * @ORM\Table(name="post")
+ * @Vich\Uploadable
  */
 class Post
 {
@@ -40,7 +43,12 @@ class Post
      *
      * @ORM\Column(name="visual", type="string")
      */
-    protected $visual ;
+    protected $visual;
+
+    /**
+     * @Vich\UploadableField(mapping="posts", fileNameProperty="visual")
+     */
+    protected $imageFile;
 
     /**
      * @var string
@@ -60,6 +68,13 @@ class Post
      * @ORM\OneToMany(targetEntity="App\Entity\Comment", mappedBy="post", cascade={"persist"})
      */
     protected $comments;
+
+    /**
+     * @ORM\Column(type="datetime")
+     *
+     * @var \DateTimeInterface|null
+     */
+    protected $updatedAt;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Category", cascade={"remove", "persist"})
@@ -116,6 +131,23 @@ class Post
         $this->visual = $visual;
 
         return $this;
+    }
+
+    /**
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile|null $imageFile
+     */
+    public function setImageFile(?File $imageFile = null): void
+    {
+        $this->imageFile = $imageFile;
+
+        if (null !== $imageFile) {
+            $this->updatedAt = new \DateTimeImmutable();
+        }
+    }
+
+    public function getImageFile(): ?File
+    {
+        return $this->imageFile;
     }
 
     public function getResume(): ?string
@@ -194,5 +226,22 @@ class Post
         $this->categories->removeElement($category);
 
         return $this;
+    }
+
+    public function getUpdatedAt(): ?\DateTimeInterface
+    {
+        return $this->updatedAt;
+    }
+
+    public function setUpdatedAt(\DateTimeInterface $updatedAt): self
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    public function __toString(): string
+    {
+        return $this->title;
     }
 }

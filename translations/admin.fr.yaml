@@ -1,0 +1,33 @@
+Posts: Articles
+Categories: Catégories
+Comments: Commentaires
+
+# Post
+post: un article
+posts: Liste des articles
+add post: Ajouter un article
+
+Title: Titre
+Publication Date: Date de publication
+Visual: Visuel
+Resume: Resumé
+Content: Contenu
+Image File: Visuel
+
+# Category
+category: une catégorie
+categories: Liste des catégories
+add category: Ajouter une catégorie
+
+Name: Nom du catégorie
+
+# Comment
+comment: un commentaire
+comments: Liste des commentaires
+add comment: Ajouter un commentaire
+
+Post: Article
+Pseudo: Pseudo
+Date: Date
+Message: Message
+Validated: Validé
